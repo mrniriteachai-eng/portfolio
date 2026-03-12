@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nirmal Saud · glass portfolio</title>
+  <!-- Font Awesome 6 (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(145deg, #0b0f1c 0%, #1a1f35 100%);
+      color: #eef2ff;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    /* ===== GLASS UI GLOBAL ===== */
+    .glass-card {
+      background: rgba(20, 30, 50, 0.25);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 2rem;
+      box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.5);
+    }
+
+    section {
+      padding: 5rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 2.8rem;
+      font-weight: 600;
+      margin-bottom: 3rem;
+      letter-spacing: -0.02em;
+      background: linear-gradient(130deg, #a0c0ff, #c0a0ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      display: inline-block;
+      border-bottom: 3px solid rgba(160, 192, 255, 0.3);
+      padding-bottom: 0.5rem;
+    }
+
+    /* ===== HEADER / NAVIGATION ===== */
+    header {
+      position: fixed;
+      top: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      max-width: 1100px;
+      z-index: 100;
+      background: rgba(10, 15, 30, 0.3);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 3rem;
+      padding: 0.8rem 2rem;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: linear-gradient(145deg, #fff, #b8c6ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: -0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.2rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: #f0f4ff;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.1rem;
+      transition: 0.2s;
+      border-bottom: 2px solid transparent;
+      padding-bottom: 4px;
+    }
+
+    .nav-links a:hover {
+      color: white;
+      border-bottom-color: #9b87ff;
+    }
+
+    /* mobile menu button */
+    .menu-toggle {
+      display: none;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.2);
+      color: white;
+      font-size: 1.8rem;
+      padding: 0.3rem 1rem;
+      border-radius: 2rem;
+      cursor: pointer;
+      backdrop-filter: blur(4px);
+    }
+
+    /* ===== HOME SECTION ===== */
+    .home {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding-top: 6rem;
+    }
+
+    .home-content {
+      max-width: 900px;
+    }
+
+    .avatar {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      margin: 0 auto 2rem;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(8px);
+      border: 3px solid rgba(255,255,255,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+      color: #b1c9ff;
+      box-shadow: 0 20px 35px -8px rgba(0,0,0,0.6);
+      overflow: hidden;
+    }
+
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .home h1 {
+      font-size: 3.8rem;
+      font-weight: 700;
+      background: linear-gradient(145deg, #fff, #cfdbff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 1rem;
+    }
+
+    .typing-wrap {
+      font-size: 2rem;
+      display: flex;
+      gap: 0.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+      color: #d6e2ff;
+    }
+
+    .static-txt {
+      font-weight: 300;
+    }
+
+    .dynamic-txt {
+      font-weight: 600;
+      background: linear-gradient(145deg, #ffd6a0, #ffb3c6);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      border-right: 3px solid rgba(255,255,255,0.6);
+      padding-right: 8px;
+      animation: blink 0.8s infinite;
+    }
+
+    @keyframes blink {
+      0%,100%{ border-color: transparent; }
+      50%{ border-color: rgba(255,255,255,0.8); }
+    }
+
+    .home-buttons {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      margin-top: 2.5rem;
+    }
+
+    .btn {
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.15);
+      padding: 0.9rem 2.5rem;
+      border-radius: 3rem;
+      font-weight: 600;
+      color: white;
+      text-decoration: none;
+      transition: 0.3s;
+      font-size: 1.2rem;
+    }
+
+    .btn-primary {
+      background: rgba(110, 87, 255, 0.25);
+      border-color: #6f57ff;
+    }
+
+    .btn:hover {
+      background: rgba(255,255,255,0.2);
+      transform: scale(1.05);
+    }
+
+    /* ===== ABOUT ===== */
+    .about-grid {
+      display: flex;
+      gap: 3rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .about-text {
+      flex: 2;
+      font-size: 1.2rem;
+      background: rgba(15, 25, 45, 0.3);
+      backdrop-filter: blur(8px);
+      padding: 2.5rem;
+      border-radius: 2.5rem;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .about-text p {
+      margin-bottom: 1.5rem;
+    }
+
+    .about-stats {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .stat-item {
+      background: rgba(0,0,0,0.2);
+      backdrop-filter: blur(6px);
+      border-radius: 2rem;
+      padding: 1.5rem;
+      text-align: center;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #b3aeff;
+    }
+
+    /* ===== SKILLS ===== */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1.8rem;
+      margin-top: 2rem;
+    }
+
+    .skill-card {
+      background: rgba(30, 40, 65, 0.2);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 1.8rem;
+      padding: 2rem 1rem;
+      text-align: center;
+      transition: 0.3s;
+      font-size: 1.2rem;
+      font-weight: 500;
+    }
+
+    .skill-card i {
+      font-size: 3rem;
+      margin-bottom: 0.8rem;
+      color: #adc4ff;
+      display: block;
+    }
+
+    .skill-card:hover {
+      background: rgba(60, 80, 130, 0.3);
+      transform: translateY(-8px);
+      border-color: #9aa9ff;
+    }
+
+    /* ===== PROJECTS ===== */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .project-card {
+      background: rgba(25, 35, 55, 0.3);
+      backdrop-filter: blur(12px);
+      border-radius: 2rem;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.05);
+      transition: 0.2s;
+    }
+
+    .project-img {
+      width: 100%;
+      height: 200px;
+      background: #2a3450;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      color: rgba(255,255,255,0.3);
+      background-size: cover;
+      background-position: center;
+    }
+
+    /* simulated project images using colors/themes from biodata */
+    .proj1 { background-image: linear-gradient(135deg, #1e3c3f, #2a4f5c); }
+    .proj2 { background-image: linear-gradient(135deg, #3f2e4e, #623b5c); }
+    .proj3 { background-image: linear-gradient(135deg, #2c5f4a, #1e6344); }
+    .proj4 { background-image: linear-gradient(135deg, #9b5e2e, #c17b3b); }
+
+    .project-info {
+      padding: 1.8rem;
+    }
+
+    .project-info h3 {
+      font-size: 1.7rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-info p {
+      opacity: 0.8;
+      margin-bottom: 1rem;
+    }
+
+    .project-link {
+      color: #b7c9ff;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    /* ===== CONTACT ===== */
+    .contact-form {
+      max-width: 700px;
+      margin: 0 auto;
+      background: rgba(15, 25, 45, 0.25);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 3rem;
+      padding: 3rem;
+    }
+
+    .input-group {
+      margin-bottom: 2rem;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 1.2rem 1.8rem;
+      background: rgba(0,0,0,0.25);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 3rem;
+      font-size: 1.1rem;
+      color: white;
+      outline: none;
+      transition: 0.2s;
+    }
+
+    textarea {
+      border-radius: 2rem;
+      resize: vertical;
+    }
+
+    input:focus, textarea:focus {
+      border-color: #8f9eff;
+      background: rgba(20, 30, 55, 0.6);
+    }
+
+    .contact-btn {
+      background: rgba(130, 140, 255, 0.25);
+      border: 1px solid #8f9eff;
+      color: white;
+      padding: 1.2rem 3rem;
+      border-radius: 3rem;
+      font-weight: 600;
+      font-size: 1.3rem;
+      cursor: pointer;
+      width: 100%;
+      backdrop-filter: blur(8px);
+      transition: 0.2s;
+    }
+
+    .contact-btn:hover {
+      background: rgba(130, 140, 255, 0.45);
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: rgba(0, 0, 0, 0.25);
+      backdrop-filter: blur(8px);
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 2rem;
+      text-align: center;
+      font-size: 1.1rem;
+      color: #b0c0e0;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 1.8rem;
+      justify-content: center;
+      margin: 1.5rem 0 1rem;
+    }
+
+    .social-icons a {
+      color: #d0dcff;
+      font-size: 1.8rem;
+      transition: 0.2s;
+    }
+
+    .social-icons a:hover {
+      color: white;
+      transform: scale(1.2);
+    }
+
+    /* ===== RESPONSIVE MOBILE MENU ===== */
+    @media (max-width: 800px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 80px;
+        left: 5%;
+        width: 90%;
+        background: rgba(15, 20, 40, 0.8);
+        backdrop-filter: blur(30px);
+        border-radius: 2rem;
+        padding: 2rem;
+        gap: 1.5rem;
+        border: 1px solid rgba(255,255,255,0.1);
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .home h1 {
+        font-size: 2.8rem;
+      }
+
+      .typing-wrap {
+        font-size: 1.5rem;
+      }
+    }
+
+    @media (max-width: 500px) {
+      section { padding: 3rem 1rem; }
+      .section-title { font-size: 2.2rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <div class="logo">Nirmal Saud</div>
+      <nav>
+        <div class="nav-links" id="navLinks">
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+      <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HOME section with typing animation -->
+    <section id="home" class="home">
+      <div class="home-content glass-card" style="padding: 3rem 2rem;">
+        <div class="avatar">
+          <img src="mr nirmal.jpeg" alt="nirmal saud">
+        </div>
+        <h1>Nirmal Saud</h1>
+        <div class="typing-wrap">
+          <span class="static-txt">I'm</span>
+          <span class="dynamic-txt" id="typing-text"></span>
+        </div>
+        <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto; opacity: 0.9;">Gamer · tech enthusiast · future cricketer</p>
+        <div class="home-buttons">
+          <a href="#projects" class="btn btn-primary"><i class="fas fa-code"></i> Projects</a>
+          <a href="#contact" class="btn"><i class="fas fa-paper-plane"></i> Contact</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT section (filled with biodata) -->
+    <section id="about">
+      <h2 class="section-title">About me</h2>
+      <div class="about-grid">
+        <div class="about-text glass-card">
+          <p><strong>Name:</strong> Nirmal Saud · <strong>DOB:</strong> June 23, 2007 · <strong>Nationality:</strong> Nepali</p>
+          <p><strong>Family:</strong> Father lakshe Saud (Cricket Coach), Mother Parbati Saud, 5 brothers. I'm the youngest gamer in the family!</p>
+          <p><strong>Education:</strong> Bachelor (IT) at KMC, +2 Science from Cricket Academy, SEE from Durga Devi Secondary School.</p>
+          <p><strong>Languages:</strong> Nepali, English, Hindi. <strong>Hobbies:</strong> gaming, reading, music, traveling, and helping others.</p>
+          <p><i class="fas fa-map-pin" style="color: #a9b9ff;"></i> Based in Kathmandu · always leveling up.</p>
+        </div>
+        <div class="about-stats">
+          <div class="stat-item glass-card">
+            <div class="stat-number">2007</div>
+            <div>born to play</div>
+          </div>
+          <div class="stat-item glass-card">
+            <div class="stat-number">5</div>
+            <div>brothers</div>
+          </div>
+          <div class="stat-item glass-card">
+            <div class="stat-number">∞</div>
+            <div>game hours</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS section (from biodata + gaming) -->
+    <section id="skills">
+      <h2 class="section-title">skills & powers</h2>
+      <div class="skills-grid">
+        <div class="skill-card"><i class="fas fa-gamepad"></i> Pro Gamer</div>
+        <div class="skill-card"><i class="fas fa-file-word"></i> MS Word</div>
+        <div class="skill-card"><i class="fas fa-file-excel"></i> Excel</div>
+        <div class="skill-card"><i class="fas fa-file-powerpoint"></i> PowerPoint</div>
+        <div class="skill-card"><i class="fas fa-comments"></i> Communication</div>
+        <div class="skill-card"><i class="fas fa-people-arrows"></i> Leadership</div>
+        <div class="skill-card"><i class="fas fa-cricket"></i> Cricket basics</div>
+        <div class="skill-card"><i class="fas fa-book"></i> Reading</div>
+      </div>
+    </section>
+
+    <!-- PROJECTS section (using biodata themes) -->
+    <section id="projects">
+      <h2 class="section-title">featured projects</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-img proj1"><i class="fas fa-trophy"></i></div>
+          <div class="project-info">
+            <h3>Esport Gammer profile</h3>
+            <p>My gaming avatar and streaming setup — inspired by my premium gamer image.</p>
+            <a href="#" class="project-link">watch live <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-img proj2"><i class="fas fa-cricket"></i></div>
+          <div class="project-info">
+            <h3>Cricket Coach (dad's legacy)</h3>
+            <p>Mini website for my father's cricket academy, with training schedules.</p>
+            <a href="#" class="project-link">see drills <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-img proj3"><i class="fas fa-people"></i></div>
+          <div class="project-info">
+            <h3>Family roots</h3>
+            <p>Digital family tree of Saud family — 5 brothers and counting.</p>
+            <a href="#" class="project-link">explore tree <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-img proj4"><i class="fas fa-graduation-cap"></i></div>
+          <div class="project-info">
+            <h3>KMC IT portfolio</h3>
+            <p>Academic projects from Bachelor (IT) — databases, basic web, etc.</p>
+            <a href="#" class="project-link">show work <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT form -->
+    <section id="contact">
+      <h2 class="section-title">let's connect</h2>
+      <div class="contact-form glass-card">
+        <form id="demoForm" onsubmit="event.preventDefault(); alert('Thanks for reaching out, ' + document.querySelector('input[type=email]').value + '! I’ll reply soon.');">
+          <div class="input-group">
+            <input type="text" placeholder="your name" required>
+          </div>
+          <div class="input-group">
+            <input type="email" placeholder="email address" required>
+          </div>
+          <div class="input-group">
+            <textarea rows="5" placeholder="your message... (maybe game together?)"></textarea>
+          </div>
+          <button type="submit" class="contact-btn"><i class="fas fa-paper-plane"></i> send message</button>
+        </form>
+        <p style="margin-top: 1.5rem; opacity: 0.6; font-size: 0.9rem;">📞 phone: 976229xxxx · 📧 nir@email.com</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-github"></i></a>
+      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#"><i class="fab fa-x-twitter"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+    </div>
+    <p>© 2025 Nirmal Saud · built with glass, gaming & family values</p>
+  </footer>
+
+  <!-- typing effect script & mobile toggle -->
+  <script>
+    (function() {
+      // ----- TYPING EFFECT (gamer style) -----
+      const words = ["Nirmal Saud", "a gamer", "a student", "a son", "a brother"];
+      const el = document.getElementById('typing-text');
+      let wordIndex = 0;
+      let charIndex = 0;
+      let isDeleting = false;
+      let typeSpeed = 100;
+
+      function typeEffect() {
+        const currentWord = words[wordIndex];
+        if (isDeleting) {
+          el.textContent = currentWord.substring(0, charIndex - 1);
+          charIndex--;
+        } else {
+          el.textContent = currentWord.substring(0, charIndex + 1);
+          charIndex++;
+        }
+
+        if (!isDeleting && charIndex === currentWord.length) {
+          isDeleting = true;
+          typeSpeed = 200; // pause before deleting
+        } else if (isDeleting && charIndex === 0) {
+          isDeleting = false;
+          wordIndex = (wordIndex + 1) % words.length;
+          typeSpeed = 150;
+        } else {
+          typeSpeed = isDeleting ? 500 : 120;
+        }
+        setTimeout(typeEffect, typeSpeed);
+      }
+
+      if (el) typeEffect();
+
+      // ----- MOBILE MENU TOGGLE -----
+      const toggleBtn = document.getElementById('menuToggle');
+      const navLinks = document.getElementById('navLinks');
+
+      if (toggleBtn && navLinks) {
+        toggleBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          navLinks.classList.toggle('active');
+        });
+
+        // close when link clicked
+        document.querySelectorAll('.nav-links a').forEach(link => {
+          link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+          });
+        });
+
+        // close if click outside
+        document.addEventListener('click', (event) => {
+          if (!navLinks.contains(event.target) && !toggleBtn.contains(event.target)) {
+            navLinks.classList.remove('active');
+          }
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
